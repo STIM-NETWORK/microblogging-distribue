@@ -21,5 +21,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".SendActivity"></activity>
+        <activity android:name="i3.microblogging.distribue.Tweets"></activity>
     </application>
 </manifest> 
