@@ -18,6 +18,8 @@
  */
 package com.techxplorer.testmeshms;
 
+import i3.microblogging.distribue.DBAdapter;
+
 import org.servalproject.meshms.SimpleMeshMS;
 
 import android.content.BroadcastReceiver;
@@ -31,12 +33,15 @@ import android.widget.Toast;
  */
 public class MeshMSReceiver extends BroadcastReceiver {
 	
+	DBAdapter db = MainActivity.db;
+	
 	// private class level constants
 	private final String TAG = "TestMeshMSReceiver";
+	
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		
+				
 		SimpleMeshMS  mSimpleMessage = (SimpleMeshMS) intent.getParcelableExtra("simple");
 		
 		Log.d(TAG, intent.getAction());
@@ -51,6 +56,7 @@ public class MeshMSReceiver extends BroadcastReceiver {
 			// show toast to help debugging
 			Toast mToast = Toast.makeText(context, R.string.toast_new_message, Toast.LENGTH_SHORT);
 			mToast.show();
+			db.saveTweet("sender" + mSimpleMessage.getSender(), "sender_number" + mSimpleMessage.getRecipient() , "content" + mSimpleMessage.getContent(), "timestamp" + mSimpleMessage.getTimestamp());
 		} else {
 			// no message found
 			Log.e(TAG, "no message found");

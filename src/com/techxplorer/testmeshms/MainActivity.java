@@ -19,22 +19,31 @@
 
 package com.techxplorer.testmeshms;
 
+import i3.microblogging.distribue.DBAdapter;
+import i3.microblogging.distribue.Tweets;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.SimpleCursorAdapter;
 
 /**
  * The main activity for the TestMeshMS application
  */
 public class MainActivity extends Activity implements OnClickListener
 {
+	
+	public static DBAdapter db;
+	
+	
 	// private class level variables
 	MeshMSReceiver receiver = null;
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -46,9 +55,13 @@ public class MainActivity extends Activity implements OnClickListener
 		setContentView(R.layout.main);
 
 		// capture the click on the buttons
-		Button button = (Button) findViewById(R.id.main_ui_btn_show_send);
-		button.setOnClickListener(this);
+		Button button_tweets = (Button) findViewById(R.id.tweets);
+		button_tweets.setOnClickListener(this);
 		
+		//Instanciation de la BDD
+		db = new DBAdapter(this);
+		db.open();
+
 		// capture broadcast intents
 		IntentFilter mIntentFilter = new IntentFilter();
 		mIntentFilter.addAction("org.servalproject.meshms.RECEIVE_MESHMS");
@@ -62,24 +75,24 @@ public class MainActivity extends Activity implements OnClickListener
 	 * @see android.view.View.OnClickListener#onClick(android.view.View)
 	 */
 	public void onClick(View v) {
-		
+
 		// check which button was touched
 		switch(v.getId()){
-		case R.id.main_ui_btn_show_send:
-			// show the send a message activity
-			Intent mSendActivityIntent = new Intent(this, com.techxplorer.testmeshms.SendActivity.class);
-			startActivity(mSendActivityIntent);
+		case R.id.tweets:
+			Intent test_bdd_intent = new Intent(this, Tweets.class);
+			startActivity(test_bdd_intent);
 			break;
 		default:
 			return;
 		}
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see android.app.Activity#onDestroy()
 	 */
 	public void onDestroy() {
+		super.onDestroy();
 		if(receiver != null) {
 			unregisterReceiver(receiver);
 		}

@@ -114,7 +114,7 @@ public class SendActivity extends Activity implements OnClickListener {
 		String mContent = mTextView.getText().toString();
 		
 		// compile a new simple message
-		SimpleMeshMS mMessage = new SimpleMeshMS(mRecipient, mContent);
+		SimpleMeshMS mMessage = new SimpleMeshMS(null, mRecipient, mContent);
 		
 		// send the message
 		Intent mMeshMSIntent = new Intent("org.servalproject.meshms.SEND_MESHMS");
