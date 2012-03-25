@@ -118,6 +118,7 @@ public class SimpleMeshMS implements Parcelable {
 
 		this.timestamp = System.currentTimeMillis();
 	}
+	
 
 	/**
 	 * get the senders phone number
