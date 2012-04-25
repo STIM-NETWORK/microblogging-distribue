@@ -1,0 +1,7 @@
+cd repertoire
+ls
+git status
+git add testmaxa.txt
+git status
+git commit
+git push origin master
