@@ -1,21 +1,16 @@
 package i3.microblogging.distribue;
 
-import com.techxplorer.testmeshms.MainActivity;
-import com.techxplorer.testmeshms.R;
-import com.techxplorer.testmeshms.R.id;
-import com.techxplorer.testmeshms.R.layout;
-
 import android.app.ListActivity;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+
+import com.techxplorer.testmeshms.MainActivity;
+import com.techxplorer.testmeshms.R;
 
 
 public class Tweets extends ListActivity implements OnClickListener {

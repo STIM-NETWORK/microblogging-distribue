@@ -16,4 +16,5 @@
     <string name="misc_ui_dialog_ok">OK</string>
     <!-- toasts -->
     <string name="toast_new_message">New MeshMS Message Received</string>
+    <string name="system_path_rhizome_data">/serval/rhizome/bundles/</string>
 </resources>

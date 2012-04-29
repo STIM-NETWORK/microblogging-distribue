@@ -21,26 +21,30 @@ package com.techxplorer.testmeshms;
 
 import i3.microblogging.distribue.DBAdapter;
 import i3.microblogging.distribue.Tweets;
+
+import java.io.FileNotFoundException;
+
+import org.servalproject.maps.rhizome.Rhizome;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.SimpleCursorAdapter;
 
 /**
  * The main activity for the TestMeshMS application
  */
 public class MainActivity extends Activity implements OnClickListener
 {
-	
+
 	public static DBAdapter db;
-	
-	
+	public static final String TAG = "MainActivity";
+
+	String Filename = null;
 	// private class level variables
 	MeshMSReceiver receiver = null;
 
@@ -57,7 +61,15 @@ public class MainActivity extends Activity implements OnClickListener
 		// capture the click on the buttons
 		Button button_tweets = (Button) findViewById(R.id.tweets);
 		button_tweets.setOnClickListener(this);
-		
+		Button button_peerList = (Button) findViewById(R.id.peerList);
+		button_peerList.setOnClickListener(this);
+		Button button_addFile = (Button) findViewById(R.id.addFile);
+		button_addFile.setOnClickListener(this);
+		Button button_writeToFile = (Button) findViewById(R.id.writeToFile);
+		button_writeToFile.setOnClickListener(this);
+		Button button_readFile= (Button) findViewById(R.id.readFile);
+		button_readFile.setOnClickListener(this);
+
 		//Instanciation de la BDD
 		db = new DBAdapter(this);
 		db.open();
@@ -68,6 +80,7 @@ public class MainActivity extends Activity implements OnClickListener
 		mIntentFilter.addAction("org.servalproject.meshms.RECEIVE_BROADCASTS");
 		receiver = new MeshMSReceiver();
 		registerReceiver(new MeshMSReceiver(), mIntentFilter);
+
 	}
 
 	/*
@@ -79,9 +92,25 @@ public class MainActivity extends Activity implements OnClickListener
 		// check which button was touched
 		switch(v.getId()){
 		case R.id.tweets:
-			Intent test_bdd_intent = new Intent(this, Tweets.class);
-			startActivity(test_bdd_intent);
+			Intent bdd_intent = new Intent(this, Tweets.class);
+			startActivity(bdd_intent);
 			break;
+		case R.id.peerList:
+			Log.i(TAG, "Test bouton peerlist");
+			break;
+		case R.id.addFile:
+			Log.i(TAG, "Test bouton addFile");
+			try {
+				Rhizome.addFile(this, Rhizome.checkForFile(this, "test_addfile2"));
+				Rhizome.addFile(this, Rhizome.checkForFile(this, "test_rhizome"));
+			} catch (FileNotFoundException e) {
+				Log.e(TAG, "unable to determine the full path", e);
+			}
+			break;
+		case R.id.writeToFile:
+			Rhizome.writeToFile(this, "test_rhizome", "test");
+		case R.id.readFile:
+			Rhizome.readFile(this, "test_rhizome");
 		default:
 			return;
 		}

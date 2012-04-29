@@ -11,6 +11,8 @@
     <uses-permission android:name="org.servalproject.meshms.SEND_MESHMS"/>
     <uses-permission android:name="org.servalproject.meshms.RECEIVE_MESHMS"/>
     <uses-permission android:name="org.servalproject.meshms.RECEIVE_BROADCASTS"/>
+    <uses-permission android:name="org.servalproject.rhizome.ADD_FILE"/>
+    <uses-permission android:name="org.servalproject.rhizome.RECIEVE_FILE"/>
 
     <application android:label="@string/app_name" >
         <activity android:name=".MainActivity"
