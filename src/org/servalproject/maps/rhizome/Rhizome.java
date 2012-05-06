@@ -241,7 +241,7 @@ public class Rhizome {
 			
 			@Override
 			public boolean accept(File dir, String filename) {
-				return filename.endsWith(".stimtweet");
+				return filename.endsWith(".stimtweets");
 			}
 		};
 		return(mFile.list(mFilenameFilter));
