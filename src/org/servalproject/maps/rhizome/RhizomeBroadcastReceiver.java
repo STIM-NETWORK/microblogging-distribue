@@ -77,7 +77,7 @@
 //		Bundle mBundle = intent.getExtras();
 //
 //		if(intent.getAction().equals("org.servalproject.rhizome.RECIEVE_FILE") == false) {
-//			Log.e(TAG, "called with an intent with an unexepcted intent action");
+//			Log.e(TAG, "called with an intent with an unexpected intent action");
 //			return;
 //		}
 //

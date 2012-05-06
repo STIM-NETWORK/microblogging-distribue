@@ -17,49 +17,22 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
     <Button
-        android:id="@+id/tweets"
+        android:id="@+id/read_tweets"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/ui_elem_margin_bottom"
         android:layout_marginLeft="@dimen/ui_elem_margin_left"
         android:layout_marginRight="@dimen/ui_elem_margin_right"
-        android:text="tweets" />
+        android:text="Regarder vos tweets" />
     
     <Button
-        android:id="@+id/peerList"
+        android:id="@+id/write_tweet"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/ui_elem_margin_bottom"
         android:layout_marginLeft="@dimen/ui_elem_margin_left"
         android:layout_marginRight="@dimen/ui_elem_margin_right"
-        android:text="peerList" />
-    
-    <Button
-        android:id="@+id/addFile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/ui_elem_margin_bottom"
-        android:layout_marginLeft="@dimen/ui_elem_margin_left"
-        android:layout_marginRight="@dimen/ui_elem_margin_right"
-        android:text="addFile" />
-    
-    <Button
-        android:id="@+id/writeToFile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/ui_elem_margin_bottom"
-        android:layout_marginLeft="@dimen/ui_elem_margin_left"
-        android:layout_marginRight="@dimen/ui_elem_margin_right"
-        android:text="writeToFile" />
-    
-    <Button
-        android:id="@+id/readFile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/ui_elem_margin_bottom"
-        android:layout_marginLeft="@dimen/ui_elem_margin_left"
-        android:layout_marginRight="@dimen/ui_elem_margin_right"
-        android:text="readFile" />
+        android:text="Ecrire un tweet" />
 
 </LinearLayout>
 

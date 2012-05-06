@@ -25,7 +25,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
+import java.util.Vector;
 
 import org.servalproject.maps.utils.FileUtils;
 
@@ -36,6 +38,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
+
 import com.techxplorer.testmeshms.R;
 
 /**
@@ -190,6 +193,85 @@ public class Rhizome {
 	/**
 	 * 
 	 * @param context
+	 * @param Filename the name of the Tweet file 
+	 * @return
+	 */
+	public static Vector<String> getTweets(Context context, String Filename) {
+		Vector<String> Tweets = new Vector<String>();
+		//String[] Tweets = null;
+		Log.i(TAG, "Read file : " + Filename);
+		BufferedReader in = null;
+		try {
+			FileReader fr = new FileReader(Rhizome.checkForFile(context, Filename));
+			in = new BufferedReader(fr);
+			String line;
+			try {
+				while ((line = in.readLine()) != null) {
+					Tweets.add(line);
+				}
+			} catch (IOException e) {
+				Log.e(TAG, "IOException", e);
+			}
+			//Close the BufferedReader
+			try {
+				if(fr != null) {
+					in.close();
+				}
+			} catch (IOException e) {
+				Log.e(TAG, "IOException", e);
+			}
+		}
+		catch(FileNotFoundException e) {
+			Log.e(TAG, "FileNotFoundException", e);
+		}
+		return Tweets;
+	}
+
+	/**
+	 * 
+	 * @param context
+	 * @return a string array of file in the Rhizome directory and with the extension ".stimtweet"
+	 * @throws FileNotFoundException
+	 */
+	public static String[] getListUser(Context context) throws FileNotFoundException {
+		File mFile = new File(Rhizome.getRhizomePath(context));
+		
+		//We use a file name filter to return only name of file with the extension ".stimtweet"
+		FilenameFilter mFilenameFilter = new  FilenameFilter() {
+			
+			@Override
+			public boolean accept(File dir, String filename) {
+				return filename.endsWith(".stimtweet");
+			}
+		};
+		return(mFile.list(mFilenameFilter));
+	}
+
+
+
+	/**
+	 * 
+	 * @param context
+	 * @return the path to the Rhizome data store 
+	 * @throws FileNotFoundException
+	 */
+	public static String getRhizomePath(Context context) throws FileNotFoundException {
+		// get the rhizome path
+		String mRhizomePath = context.getString(R.string.system_path_rhizome_data);
+		try {
+			String mExternal = Environment.getExternalStorageDirectory().getCanonicalPath();
+			mRhizomePath = mExternal + mRhizomePath;
+		} catch (IOException e) {
+			Log.e(TAG, "unable to determine the full path to the Rhizome data store", e);
+			throw new FileNotFoundException("unable to determine the full path to the Rhizome data store");
+		}
+
+		return(mRhizomePath);
+	}
+
+	/**
+	 * 
+	 * @param context
 	 * @param fileName
 	 * @return
 	 * @throws FileNotFoundException
@@ -205,14 +287,7 @@ public class Rhizome {
 		}
 
 		// get the rhizome path
-		String mRhizomePath = context.getString(R.string.system_path_rhizome_data);
-		try {
-			String mExternal = Environment.getExternalStorageDirectory().getCanonicalPath();
-			mRhizomePath = mExternal + mRhizomePath;
-		} catch (IOException e) {
-			Log.e(TAG, "unable to determine the full path to the Rhizome data store", e);
-			throw new FileNotFoundException("unable to determine the full path to the Rhizome data store");
-		}
+		String mRhizomePath = Rhizome.getRhizomePath(context);
 
 		// check on the rhizome path
 		if(FileUtils.isDirectoryWritable(mRhizomePath) == false) {
