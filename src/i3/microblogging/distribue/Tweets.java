@@ -16,7 +16,7 @@ public class Tweets extends ListActivity {
 
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		Vector<String> tweets = Rhizome.getTweets(this, "test_rhizome");
+		Vector<String> tweets = Rhizome.getTweets(this, UserList.User);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, tweets);
 		setListAdapter(adapter);
@@ -26,6 +26,7 @@ public class Tweets extends ListActivity {
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		String item = (String) getListAdapter().getItem(position);
 		Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
+		//TODO implémenter Reply, Retweet, Favorite
 	}
 
 	/*

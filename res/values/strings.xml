@@ -8,7 +8,7 @@
     <string name="send_ui_lbl_recipient">Recipient Number</string>
     <string name="send_ui_lbl_content">Content</string>
     <string name="send_ui_btn_lookup_contact">Choose Contact</string>
-    <string name="send_ui_btn_send_message">Send Message</string>
+    <string name="send_tweet">Tweet</string>
     <string name="send_ui_dialog_recipient_empty">A recipient phone number is required</string>
     <string name="send_ui_dialog_recipient_invalid">The recipient phone number is invalid</string>
     <string name="send_ui_dialog_content_empty">MeshMS content is required</string>
@@ -17,4 +17,6 @@
     <!-- toasts -->
     <string name="toast_new_message">New MeshMS Message Received</string>
     <string name="system_path_rhizome_data">/serval/rhizome/bundles/</string>
+    <string name="system_path_rhizome_temp">/serval/rhizome/temp/</string>
+    <string name="system_path_rhizome_stimtweets">/serval/rhizome/stimtweets/</string>
 </resources>

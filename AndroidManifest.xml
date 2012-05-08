@@ -25,5 +25,6 @@
         <activity android:name=".SendActivity"></activity>
         <activity android:name="i3.microblogging.distribue.Tweets"></activity>
         <activity android:name="i3.microblogging.distribue.UserList"></activity>
+        <activity android:name="i3.microblogging.distribue.WriteTweet"></activity>
     </application>
 </manifest> 

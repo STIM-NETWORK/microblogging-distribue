@@ -21,23 +21,19 @@ public final class R {
     }
     public static final class id {
         public static final int main_ui_lbl_about=0x7f060000;
-        public static final int rafraichir=0x7f06000b;
+        public static final int rafraichir=0x7f060004;
         public static final int read_tweets=0x7f060001;
-        public static final int scrollView1=0x7f060003;
-        public static final int send_tweet=0x7f06000c;
-        public static final int send_ui_btn_lookup_contact=0x7f060006;
-        public static final int send_ui_btn_send_message=0x7f060009;
+        public static final int scrollView1=0x7f060006;
+        public static final int send_tweet=0x7f060005;
         public static final int send_ui_lbl_content=0x7f060007;
-        public static final int send_ui_lbl_recipient=0x7f060004;
-        public static final int send_ui_txt_content=0x7f060008;
-        public static final int send_ui_txt_recipient=0x7f060005;
-        public static final int textView=0x7f06000a;
+        public static final int text=0x7f060008;
+        public static final int textView=0x7f060003;
         public static final int write_tweet=0x7f060002;
     }
     public static final class layout {
         public static final int main=0x7f030000;
-        public static final int send=0x7f030001;
-        public static final int tweets=0x7f030002;
+        public static final int tweets=0x7f030001;
+        public static final int writetweet=0x7f030002;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
@@ -48,8 +44,8 @@ public final class R {
         /**  misc ui elements 
          */
         public static final int misc_ui_dialog_ok=0x7f05000a;
+        public static final int send_tweet=0x7f050006;
         public static final int send_ui_btn_lookup_contact=0x7f050005;
-        public static final int send_ui_btn_send_message=0x7f050006;
         public static final int send_ui_dialog_content_empty=0x7f050009;
         public static final int send_ui_dialog_recipient_empty=0x7f050007;
         public static final int send_ui_dialog_recipient_invalid=0x7f050008;
@@ -58,6 +54,8 @@ public final class R {
          */
         public static final int send_ui_lbl_recipient=0x7f050003;
         public static final int system_path_rhizome_data=0x7f05000c;
+        public static final int system_path_rhizome_stimtweets=0x7f05000e;
+        public static final int system_path_rhizome_temp=0x7f05000d;
         /**  toasts 
          */
         public static final int toast_new_message=0x7f05000b;

@@ -98,26 +98,25 @@ public class Rhizome {
 	/**
 	 * check to see if a file is in Rhizome
 	 * 
-	 * @param fileNname the name of the file to look for
+	 * @param filePath the full path to the file
 	 * @return the full path to the file
 	 */
-	public static String checkForFile(Context context, String fileName) throws FileNotFoundException{
+	public static String checkForFile(Context context, String filePath) throws FileNotFoundException{
 
 		// check on the parameters
 		if(context == null) {
 			throw new IllegalArgumentException("the context parameter is required");
 		}
 
-		if(TextUtils.isEmpty(fileName)) {
+		if(TextUtils.isEmpty(filePath)) {
 			throw new IllegalArgumentException("the file name parameter is required");
 		}
 
 		// check to see if the file is available
-		String FullPath = Rhizome.getFullPath(context, fileName);
-		if(FileUtils.isFileReadable(FullPath) == true) {
-			return FullPath;
+		if(FileUtils.isFileReadable(filePath) == true) {
+			return filePath;
 		} else {
-			throw new FileNotFoundException("Unable to read the specified file : " + FullPath);
+			throw new FileNotFoundException("Unable to read the specified file : " + filePath);
 		}
 	}
 
@@ -125,18 +124,25 @@ public class Rhizome {
 	 * write to a file
 	 * 
 	 * @param context
-	 * @param path of the file
+	 * @param name of the file
 	 * @param content to write
 	 */
-	public static void writeToFile(Context context, String path, String content) {
-		Log.i(TAG, "Write to file : " + path);
+	public static void writeToFile(Context context, String fileName, String content) {
+		String filePath = null;
+		try {
+			filePath = Rhizome.getRhizomeStimTweetsPath(context) + fileName;
+		} catch (FileNotFoundException e) {
+			Log.e(TAG, "Unable to find the file : " + filePath, e);
+		}
+		Log.i(TAG, "Write to file : " + filePath);
 		BufferedWriter writer = null;
 		try {
-			FileWriter fw = new FileWriter(Rhizome.checkForFile(context, path), true);
+			FileWriter fw = new FileWriter(Rhizome.checkForFile(context, filePath), true);
 			writer = new BufferedWriter(fw);
 			writer.append(content);
 			writer.newLine();
 			Log.i(TAG, "Write to file : " + content);
+			Rhizome.addFile(context, filePath);
 		} catch (FileNotFoundException e1) {
 			Log.e(TAG, "FileNotFoundException", e1);
 			e1.printStackTrace();
@@ -156,17 +162,17 @@ public class Rhizome {
 	}
 
 
-	/**
+	/** NB : this method is no longer use but can be useful as an example
 	 * read a file
 	 * 
 	 * @param context
-	 * @param Filename the file to read
+	 * @param filePath the full path to the file
 	 */
-	public static void readFile(Context context, String Filename) {
-		Log.i(TAG, "Read file : " + Filename);
+	public static void readFile(Context context, String filePath) {
+		Log.i(TAG, "Read file : " + filePath);
 		BufferedReader in = null;
 		try {
-			FileReader fr = new FileReader(Rhizome.checkForFile(context, Filename));
+			FileReader fr = new FileReader(Rhizome.checkForFile(context, filePath));
 			in = new BufferedReader(fr);
 			String line;
 			try {
@@ -190,19 +196,25 @@ public class Rhizome {
 		}
 	}
 
+
 	/**
 	 * 
 	 * @param context
 	 * @param Filename the name of the Tweet file 
-	 * @return
+	 * @return Vector<String> that contain all the tweet in the file
 	 */
-	public static Vector<String> getTweets(Context context, String Filename) {
+	public static Vector<String> getTweets(Context context, String fileName) {
+		String filePath = null;
+		try {
+			filePath = Rhizome.getRhizomeDataPath(context) + fileName;
+		} catch (FileNotFoundException e1) {
+			Log.e(TAG, "Unable to find the file : "+fileName, e1);
+		}
 		Vector<String> Tweets = new Vector<String>();
-		//String[] Tweets = null;
-		Log.i(TAG, "Read file : " + Filename);
+		Log.i(TAG, "Read file : " + filePath);
 		BufferedReader in = null;
 		try {
-			FileReader fr = new FileReader(Rhizome.checkForFile(context, Filename));
+			FileReader fr = new FileReader(Rhizome.checkForFile(context, filePath));
 			in = new BufferedReader(fr);
 			String line;
 			try {
@@ -234,7 +246,7 @@ public class Rhizome {
 	 * @throws FileNotFoundException
 	 */
 	public static String[] getListUser(Context context) throws FileNotFoundException {
-		File mFile = new File(Rhizome.getRhizomePath(context));
+		File mFile = new File(Rhizome.getRhizomeDataPath(context));
 		
 		//We use a file name filter to return only name of file with the extension ".stimtweet"
 		FilenameFilter mFilenameFilter = new  FilenameFilter() {
@@ -255,46 +267,39 @@ public class Rhizome {
 	 * @return the path to the Rhizome data store 
 	 * @throws FileNotFoundException
 	 */
-	public static String getRhizomePath(Context context) throws FileNotFoundException {
-		// get the rhizome path
-		String mRhizomePath = context.getString(R.string.system_path_rhizome_data);
+	public static String getRhizomeDataPath(Context context) throws FileNotFoundException {
+		// get the rhizome data path
+		String mRhizomeDataPath = context.getString(R.string.system_path_rhizome_data);
 		try {
 			String mExternal = Environment.getExternalStorageDirectory().getCanonicalPath();
-			mRhizomePath = mExternal + mRhizomePath;
+			mRhizomeDataPath = mExternal + mRhizomeDataPath;
 		} catch (IOException e) {
 			Log.e(TAG, "unable to determine the full path to the Rhizome data store", e);
 			throw new FileNotFoundException("unable to determine the full path to the Rhizome data store");
 		}
 
-		return(mRhizomePath);
+		return(mRhizomeDataPath);
 	}
-
+	
 	/**
 	 * 
 	 * @param context
-	 * @param fileName
-	 * @return
+	 * @return the path to the Rhizome StimTweets directory
 	 * @throws FileNotFoundException
 	 */
-	public static String getFullPath(Context context, String fileName) throws FileNotFoundException {
-		// check on the parameters
-		if(context == null) {
-			throw new IllegalArgumentException("the context parameter is required");
+	public static String getRhizomeStimTweetsPath(Context context) throws FileNotFoundException {
+		// get the rhizome SimTweets path
+		String mRhizomeStimTweetsPath = context.getString(R.string.system_path_rhizome_stimtweets);
+		try {
+			String mExternal = Environment.getExternalStorageDirectory().getCanonicalPath();
+			mRhizomeStimTweetsPath = mExternal + mRhizomeStimTweetsPath;
+			//Check if directory is writable
+			FileUtils.isDirectoryWritable(mRhizomeStimTweetsPath);
+		} catch (IOException e) {
+			Log.e(TAG, "unable to determine the full path to the Rhizome data store", e);
+			throw new FileNotFoundException("unable to determine the full path to the Rhizome data store");
 		}
 
-		if(TextUtils.isEmpty(fileName)) {
-			throw new IllegalArgumentException("the file name parameter is required");
-		}
-
-		// get the rhizome path
-		String mRhizomePath = Rhizome.getRhizomePath(context);
-
-		// check on the rhizome path
-		if(FileUtils.isDirectoryWritable(mRhizomePath) == false) {
-			Log.e(TAG, "unable to access the rhizome directory: " + mRhizomePath);
-			throw new FileNotFoundException("unable to access the rhizome directory: " + mRhizomePath);
-		}
-
-		return(mRhizomePath + fileName);
+		return(mRhizomeStimTweetsPath);
 	}
 }

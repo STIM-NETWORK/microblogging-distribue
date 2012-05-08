@@ -19,11 +19,8 @@
 
 package com.techxplorer.testmeshms;
 
-import i3.microblogging.distribue.Tweets;
 import i3.microblogging.distribue.UserList;
-
-import org.servalproject.maps.rhizome.Rhizome;
-
+import i3.microblogging.distribue.WriteTweet;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,6 +35,7 @@ public class MainActivity extends Activity implements OnClickListener
 {
 
 	public static final String TAG = "MainActivity";
+	public static String User = "test";
 
 	String Filename = null;
 
@@ -68,20 +66,13 @@ public class MainActivity extends Activity implements OnClickListener
 		// check which button was touched
 		switch(v.getId()){
 		case R.id.read_tweets:
-			Intent bdd_intent = new Intent(this, UserList.class);
-			startActivity(bdd_intent);
+			Intent UserList = new Intent(this, UserList.class);
+			startActivity(UserList);
 			break;
-//		case R.id.addFile:
-//			Log.i(TAG, "Test bouton addFile");
-//			try {
-//				Rhizome.addFile(this, Rhizome.checkForFile(this, "test_addfile2"));
-//				Rhizome.addFile(this, Rhizome.checkForFile(this, "test_rhizome"));
-//			} catch (FileNotFoundException e) {
-//				Log.e(TAG, "unable to determine the full path", e);
-//			}
-//			break;
 		case R.id.write_tweet:
-			Rhizome.writeToFile(this, "test_rhizome", "test");
+			Intent WriteTweet = new Intent(this, WriteTweet.class);
+			startActivity(WriteTweet);
+			break;
 		default:
 			return;
 		}

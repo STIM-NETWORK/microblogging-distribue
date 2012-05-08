@@ -5,17 +5,18 @@ import java.io.FileNotFoundException;
 import org.servalproject.maps.rhizome.Rhizome;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 
 public class UserList extends ListActivity {
 
 	public static final String TAG="UserList";
+	public static String User = null;
 	
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
@@ -34,7 +35,9 @@ public class UserList extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		String item = (String) getListAdapter().getItem(position);
-		Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
+		User = item;
+		Intent Tweets = new Intent(this, Tweets.class);
+		startActivity(Tweets);
 	}
 
 	/*

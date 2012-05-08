@@ -52,6 +52,7 @@ public class FileUtils {
 		if(mPath.isDirectory() && mPath.canWrite()) {
 			return true;
 		} else {
+			Log.i(TAG, "Directory created : " + path);
 			return mPath.mkdirs();
 		}
 	}
@@ -102,6 +103,7 @@ public class FileUtils {
 			}
 		} else {
 			try {
+				Log.i(TAG, "Create new file : "+path);
 				return(mFile.createNewFile());
 			} catch (IOException e) {
 				Log.e(TAG, "Unable to create the specified file : " + path, e);

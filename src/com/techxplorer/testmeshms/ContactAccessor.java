@@ -24,8 +24,8 @@ package com.techxplorer.testmeshms;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.net.Uri;
-import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.Contacts;
 
 public class ContactAccessor {
 
