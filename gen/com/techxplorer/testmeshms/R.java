@@ -43,27 +43,26 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
-        public static final int main_ui_btn_show_send=0x7f050002;
         /**  main activity ui 
          */
-        public static final int main_ui_lbl_about=0x7f050001;
+        public static final int main_ui_btn_show_send=0x7f050001;
         /**  misc ui elements 
          */
-        public static final int misc_ui_dialog_ok=0x7f05000a;
-        public static final int send_tweet=0x7f050006;
-        public static final int send_ui_btn_lookup_contact=0x7f050005;
-        public static final int send_ui_dialog_content_empty=0x7f050009;
-        public static final int send_ui_dialog_recipient_empty=0x7f050007;
-        public static final int send_ui_dialog_recipient_invalid=0x7f050008;
-        public static final int send_ui_lbl_content=0x7f050004;
+        public static final int misc_ui_dialog_ok=0x7f050009;
+        public static final int send_tweet=0x7f050005;
+        public static final int send_ui_btn_lookup_contact=0x7f050004;
+        public static final int send_ui_dialog_content_empty=0x7f050008;
+        public static final int send_ui_dialog_recipient_empty=0x7f050006;
+        public static final int send_ui_dialog_recipient_invalid=0x7f050007;
+        public static final int send_ui_lbl_content=0x7f050003;
         /**  send activity ui 
          */
-        public static final int send_ui_lbl_recipient=0x7f050003;
-        public static final int system_path_rhizome_data=0x7f05000c;
-        public static final int system_path_rhizome_stimtweets=0x7f05000e;
-        public static final int system_path_rhizome_temp=0x7f05000d;
+        public static final int send_ui_lbl_recipient=0x7f050002;
+        public static final int system_path_rhizome_data=0x7f05000b;
+        public static final int system_path_rhizome_stimtweets=0x7f05000d;
+        public static final int system_path_rhizome_temp=0x7f05000c;
         /**  toasts 
          */
-        public static final int toast_new_message=0x7f05000b;
+        public static final int toast_new_message=0x7f05000a;
     }
 }
