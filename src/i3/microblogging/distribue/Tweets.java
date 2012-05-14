@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2012 ESIROI. All rights reserved.
+ * StimTweets is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * StimTweets is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with StimTweets.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package i3.microblogging.distribue;
 
 import java.util.Vector;
@@ -27,6 +43,7 @@ public class Tweets extends ListActivity {
 		String item = (String) getListAdapter().getItem(position);
 		Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
 		//TODO implémenter Reply, Retweet, Favorite
+		//TODO changer l'ordre d'affichage des tweets (le tweet le plus récent est au début de la liste et non à la fin)
 	}
 
 	/*

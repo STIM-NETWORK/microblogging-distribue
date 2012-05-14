@@ -1,30 +1,26 @@
 /*
- *  This file is part of TestMeshMS.
+ * Copyright (C) 2012 ESIROI. All rights reserved.
+ * StimTweets is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  TestMeshMS is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * StimTweets is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- *  TestMeshMS is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with TestMeshMS.  If not, see <http://www.gnu.org/licenses/>.
- *  
- *  Copyright 2012, Corey Wallis (techxplorer)
+ * You should have received a copy of the GNU General Public License
+ * along with StimTweets.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package i3.microblogging.distribue;
 
-import com.techxplorer.testmeshms.R;
-import com.techxplorer.testmeshms.R.id;
-import com.techxplorer.testmeshms.R.layout;
+import org.servalproject.maps.rhizome.RhizomeBroadcastReceiver;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,12 +29,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.techxplorer.testmeshms.R;
+
 /**
  * The main activity for the StimTweet application
  */
 public class MainActivity extends Activity implements OnClickListener
 {
 
+	RhizomeBroadcastReceiver receiver = null;
+	
 	public static final String TAG = "MainActivity";
 	public static String User = null;
 
@@ -57,6 +57,12 @@ public class MainActivity extends Activity implements OnClickListener
 		// capture the click on the buttons
 		Button button_connexion = (Button) findViewById(R.id.connexion);
 		button_connexion.setOnClickListener(this);
+
+		// capture broadcast intents
+		IntentFilter mIntentFilter = new IntentFilter();
+		mIntentFilter.addAction("org.servalproject.rhizome.RECIEVE_FILE");
+		receiver = new RhizomeBroadcastReceiver();
+		registerReceiver(new RhizomeBroadcastReceiver(), mIntentFilter);
 
 	}
 
