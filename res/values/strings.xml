@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">StimTweets</string>
     <!-- main activity ui -->
-    <string name="main_ui_lbl_about">The TestMeshMS application is designed to provide a test platform for the MeshMS API in the main Serval Project software</string>
     <string name="main_ui_btn_show_send">Send a MeshMS</string>
     <!-- send activity ui -->
     <string name="send_ui_lbl_recipient">Recipient Number</string>
