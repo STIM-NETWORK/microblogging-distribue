@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:orientation="vertical" 
+    android:background="@drawable/bg"    
     >
-
-    <ImageSwitcher
+    
+   <ImageSwitcher
         android:id="@+id/imageSwitcher3"
         android:layout_width="match_parent"
         android:layout_height="96dp" >
@@ -21,35 +21,23 @@
             android:textSize="40dp" android:textColor="#34adf9"/>
 
     </ImageSwitcher>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nom d&apos;utilisateur :"
-        android:textColor="#FFFFFF"
-        android:layout_gravity="center"
-        android:textSize="20dp" />
-
-    <EditText
-        android:id="@+id/identifiant"
-        android:layout_width="218dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:inputType="text" android:layout_marginBottom="80px">
-
-        <requestFocus />
-    </EditText>
-
+    
     <Button
-        android:id="@+id/connexion"
-        android:layout_width="216dp"
+        android:id="@+id/read_tweets"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginBottom="@dimen/ui_elem_margin_bottom"
         android:layout_marginLeft="@dimen/ui_elem_margin_left"
         android:layout_marginRight="@dimen/ui_elem_margin_right"
-        android:keepScreenOn="true"
-        android:text="CONNEXION" />
+        android:text="Regarder vos tweets" />
+    
+    <Button
+        android:id="@+id/write_tweet"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/ui_elem_margin_bottom"
+        android:layout_marginLeft="@dimen/ui_elem_margin_left"
+        android:layout_marginRight="@dimen/ui_elem_margin_right"
+        android:text="Ecrire un tweet" />
     
 </LinearLayout>
-

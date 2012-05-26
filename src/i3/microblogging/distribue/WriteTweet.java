@@ -16,36 +16,44 @@
 
 package i3.microblogging.distribue;
 
-import java.util.Vector;
-
 import org.servalproject.maps.rhizome.Rhizome;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.techxplorer.testmeshms.R;
 
-public class Tweets extends ListActivity {
+public class WriteTweet extends Activity implements OnClickListener {
 
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
-		Vector<String> tweets = Rhizome.getTweets(this, UserList.User);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, tweets);
-		setListAdapter(adapter);
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.writetweet);
+		
+		Button button_tweet = (Button) findViewById(R.id.send_tweet);
+		button_tweet.setOnClickListener(this);
+
 	}
 
-	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
-		String item = (String) getListAdapter().getItem(position);
-		Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
-		//TODO implémenter Reply, Retweet, Favorite
-		//TODO changer l'ordre d'affichage des tweets (le tweet le plus récent est au début de la liste et non à la fin)
-	}
+	public void onClick(View v) {
 
+		// check which button was touched
+		switch(v.getId()){
+		case R.id.send_tweet:
+			//TODO Vérifier le nombre de caractère (140 caractères max)
+			TextView mTextView = (TextView) findViewById(R.id.text);
+			String mContent = mTextView.getText().toString();
+			Rhizome.writeToFile(this, MainActivity.User+".stimtweets", mContent);
+			break;
+		default:
+			return;
+		}
+	}
+	
+	
 	/*
 	 * (non-Javadoc)
 	 * @see android.app.Activity#onDestroy()
@@ -54,3 +62,4 @@ public class Tweets extends ListActivity {
 		super.onDestroy();
 	}
 }
+
