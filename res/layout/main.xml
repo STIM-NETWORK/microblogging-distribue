@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    >
+    android:orientation="vertical" >
 
-    <ImageSwitcher
-        android:id="@+id/imageSwitcher3"
-        android:layout_width="match_parent"
-        android:layout_height="96dp" >
+    <!-- <ImageSwitcher -->
+    <!-- android:id="@+id/imageSwitcher3" -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="96dp" > -->
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/app_name"
+        android:textColor="#34adf9"
+        android:textSize="40dp" />
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="StimTweets"
-            android:textSize="40dp" android:textColor="#34adf9"/>
-
-    </ImageSwitcher>
+    <!-- </ImageSwitcher> -->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Nom d&apos;utilisateur :"
         android:textColor="#FFFFFF"
-        android:layout_gravity="center"
         android:textSize="20dp" />
 
     <EditText
@@ -35,9 +34,10 @@
         android:layout_width="218dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:inputType="text" android:layout_marginBottom="80px">
+        android:layout_marginBottom="80px"
+        android:inputType="text" >
 
-        <requestFocus />
+        <!-- <requestFocus /> -->
     </EditText>
 
     <Button
@@ -50,6 +50,5 @@
         android:layout_marginRight="@dimen/ui_elem_margin_right"
         android:keepScreenOn="true"
         android:text="CONNEXION" />
-    
-</LinearLayout>
 
+</LinearLayout>
