@@ -35,6 +35,9 @@ public class Tweets extends ListActivity {
 		Vector<String> tweets = Rhizome.getTweets(this, UserList.User);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, tweets);
+		// set background image
+		getListView().setCacheColorHint(0);
+		getListView().setBackgroundResource(R.drawable.bg);
 		setListAdapter(adapter);
 	}
 

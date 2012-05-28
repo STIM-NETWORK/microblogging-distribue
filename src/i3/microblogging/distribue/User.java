@@ -19,11 +19,14 @@ package i3.microblogging.distribue;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
-import com.techxplorer.testmeshms.R;
+import i3.microblogging.distribue.R;
+
 
 
 public class User extends Activity implements OnClickListener
@@ -44,11 +47,17 @@ public class User extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_interface);
 
+		// Edit the textView
+		TextView tv = (TextView) findViewById(R.id.User);
+		tv.append("Connecté en tant que "+MainActivity.User);
+		
 		// capture the click on the buttons
 		Button button_readTweets = (Button) findViewById(R.id.read_tweets);
 		button_readTweets.setOnClickListener(this);
 		Button button_writeTweet = (Button) findViewById(R.id.write_tweet);
 		button_writeTweet.setOnClickListener(this);
+		Button button_deconnexion = (Button) findViewById(R.id.deconnexion);
+		button_deconnexion.setOnClickListener(this);
 
 	}
 
@@ -68,6 +77,10 @@ public class User extends Activity implements OnClickListener
 			Intent WriteTweet = new Intent(this, WriteTweet.class);
 			startActivity(WriteTweet);
 			break;
+		case R.id.deconnexion:
+			MainActivity.User = null;
+			Intent MainActivity = new Intent(this, MainActivity.class);
+			startActivity(MainActivity);
 		default:
 			return;
 		}

@@ -65,7 +65,7 @@ public class RhizomeBroadcastReceiver extends BroadcastReceiver {
 			Log.v(TAG, "version: " + Long.toString(mBundle.getLong("version")));
 			Log.v(TAG, "name: " + mBundle.getString("name"));
 			Log.v(TAG, "user: " + userString);
-			Toast.makeText(context, "Nouveau Tweet reçu de " + userString+"!", Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "Nouveau message reçu de " + userString+"!", Toast.LENGTH_LONG).show();
 		}
 	}
 }

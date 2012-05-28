@@ -24,6 +24,7 @@
 
 package org.servalproject.maps.rhizome;
 
+import i3.microblogging.distribue.R;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -44,7 +45,6 @@ import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.techxplorer.testmeshms.R;
 
 /**
  * used to add a file to the Rhizome repository
@@ -246,10 +246,10 @@ public class Rhizome {
 	}
 
 	/**
-	 * get the list of user (file in the Rhizome directory and with the extension ".stimtweet")
+	 * get the list of user (file in the Rhizome directory and with the extension ".stimtweets")
 	 * 
 	 * @param context
-	 * @return a string array of file in the Rhizome directory and with the extension ".stimtweet"
+	 * @return a string array of file in the Rhizome directory and with the extension ".stimtweets"
 	 * @throws FileNotFoundException
 	 */
 	public static String[] getListUser(Context context) throws FileNotFoundException {

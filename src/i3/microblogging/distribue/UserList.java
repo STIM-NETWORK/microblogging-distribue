@@ -28,12 +28,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import i3.microblogging.distribue.R;
 
 public class UserList extends ListActivity {
 
 	public static final String TAG="UserList";
 	public static String User = null;
-	
+
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		String[] listUser = null;
@@ -45,6 +46,10 @@ public class UserList extends ListActivity {
 		}
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listUser);
+		
+		// set background image
+		getListView().setCacheColorHint(0);
+		getListView().setBackgroundResource(R.drawable.bg);
 		setListAdapter(adapter);
 	}
 

@@ -21,6 +21,7 @@ import org.servalproject.maps.rhizome.RhizomeBroadcastReceiver;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,7 +30,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.techxplorer.testmeshms.R;
+import i3.microblogging.distribue.R;
 
 /**
  * The main activity for the StimTweet application
@@ -81,7 +82,12 @@ public class MainActivity extends Activity implements OnClickListener
 				Log.i(TAG, "Aucun nom d'utilisateur");
 				Toast.makeText(this, "Veuillez entrer un nom d'utilisateur", Toast.LENGTH_LONG).show();
 			} else {
+				// get the user name
 				User = mContent;
+				// add the user name in the strings.xml file
+				Resources res = getResources();
+				String.format(res.getString(R.string.user_connected), User);
+				// launch the user interface
 				Intent UserList = new Intent(this, User.class);
 				startActivity(UserList);
 			}
