@@ -18,4 +18,8 @@
     <string name="system_path_rhizome_data">/serval/rhizome/bundles/</string>
     <string name="system_path_rhizome_temp">/serval/rhizome/temp/</string>
     <string name="system_path_rhizome_stimtweets">/serval/rhizome/stimtweets/</string>
+    <string name="user_connected">Connecté en tant que %1$s</string>
+    <string name="write_tweet">Ecrivez votre tweet :</string>
+    <string name="deconnexion">Déconnexion</string>
+    
 </resources>
